@@ -1,10 +1,9 @@
-import 'dart:math';
-import 'package:flutter/material.dart';
 
-final random = Random();
+import 'package:flutter/material.dart';
+import 'package:quiz_app/start_screen.dart';
 
 class Quiz extends StatefulWidget {
-  const Quiz({Key? key}) : super(key: key);
+  const Quiz({super.key});
 
   @override
   State<Quiz> createState() => _QuizState();
@@ -15,39 +14,22 @@ class _QuizState extends State<Quiz> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Image.asset(
-          "assets/images/quiz-logo.png",
-          width: 200,
-        ),
-        const SizedBox(
-          height: 50,
-        ),
-        const Text(
-          "Learn Flutter the fun way!",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 24,
-          ),
-        ),
-        const SizedBox(
-          height: 30,
-        ),
-       
-        OutlinedButton(
-          onPressed: () {},
-          style: OutlinedButton.styleFrom(
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.zero, // Square corners
+    return MaterialApp(
+      home: Scaffold(
+        body: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color.fromARGB(255, 78, 13, 151),
+                Color.fromARGB(255, 107, 15, 168),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
             ),
-            // Width and height equal = square
-           foregroundColor: Colors.white
           ),
-          child: const Text('Start Quiz'),
-        )
-      ],
+          child: const StartScreen(),
+        ),
+      ),
     );
   }
 }
