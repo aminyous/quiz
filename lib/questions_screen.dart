@@ -16,15 +16,15 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
+          const Text(
             'The Question of our quiz game is here.',
             style: TextStyle(color: Colors.white),
           ),
-          SizedBox(height: 30),
-          AnswerButton('Answer 1', (){print('hello');}),
-          AnswerButton('Answer 2', (){}),
-          AnswerButton('Answer 3', (){}),
-          AnswerButton('Answer 4', (){}),
+          const SizedBox(height: 30),
+          AnswerButton(answerText: 'Answer 1', onTap: (){print('hello');}),
+          AnswerButton(answerText: 'Answer 2', onTap: (){print('hello');}),
+          AnswerButton(answerText: 'Answer 3', onTap: (){print('hello');}),
+          AnswerButton(answerText: 'Answer 4', onTap: (){print('hello');}),
         ],
       ),
     );
