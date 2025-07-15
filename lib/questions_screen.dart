@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/answer_button.dart';
-
+import 'package:quiz_app/data/questions.dart';
 class QuestionsScreen extends StatefulWidget {
   const QuestionsScreen({super.key});
 
@@ -9,6 +9,9 @@ class QuestionsScreen extends StatefulWidget {
 }
 
 class _QuestionsScreenState extends State<QuestionsScreen> {
+
+  final currentQuestion = questions[0];
+
   @override
   Widget build(BuildContext context) {
     return  SizedBox(
@@ -16,15 +19,18 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text(
-            'The Question of our quiz game is here.',
-            style: TextStyle(color: Colors.white),
+          Text(
+            currentQuestion.text,
+            style: const TextStyle(color: Colors.white),
           ),
           const SizedBox(height: 30),
-          AnswerButton(answerText: 'Answer 1', onTap: (){print('hello');}),
-          AnswerButton(answerText: 'Answer 2', onTap: (){print('hello');}),
-          AnswerButton(answerText: 'Answer 3', onTap: (){print('hello');}),
-          AnswerButton(answerText: 'Answer 4', onTap: (){print('hello');}),
+          AnswerButton(answerText: currentQuestion.answers[0], onTap: (){print(currentQuestion.text);}),
+          
+          AnswerButton(answerText: currentQuestion.answers[1], onTap: (){print('hello2');}),
+          
+          AnswerButton(answerText: currentQuestion.answers[2], onTap: (){print('hello34');}),
+          
+          AnswerButton(answerText: currentQuestion.answers[3], onTap: (){print('helldfdo4');}),
         ],
       ),
     );
