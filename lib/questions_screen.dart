@@ -21,9 +21,6 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
       if (currentQuestionIndex < questions.length - 1) {
         // If there are more questions, increment the index
         currentQuestionIndex++;
-      } else {
-        // If it's the last question, reset to the first question
-        currentQuestionIndex = 0;
       }
     });
   }
