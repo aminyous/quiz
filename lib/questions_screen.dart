@@ -10,10 +10,23 @@ class QuestionsScreen extends StatefulWidget {
 }
 
 class _QuestionsScreenState extends State<QuestionsScreen> {
-  final currentQuestion = questions[0];
+  var currentQuestionIndex = 0;
+
+  void answerQuestion() {
+    setState(() {
+      if (currentQuestionIndex < questions.length - 1) {
+        // If there are more questions, increment the index
+        currentQuestionIndex++;
+      } else {
+        // If it's the last question, reset to the first question
+        currentQuestionIndex = 0;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    final currentQuestion = questions[currentQuestionIndex];
     return SizedBox(
       width: double.infinity,
       child: Container(
@@ -28,14 +41,14 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 30),
-            ...currentQuestion.getShuffledAnswers().map((answer) {
-              return AnswerButton(
+            ...currentQuestion.getShuffledAnswers().map(
+              (answer) {
+                return AnswerButton(
                   answerText: answer,
-                  onTap: () {
-                    print('object');
-                  });
-            }),
-            
+                  onTap: answerQuestion,
+                );
+              },
+            ),
           ],
         ),
       ),
