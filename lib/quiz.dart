@@ -12,7 +12,6 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-
   final List<String> selectedAnswers = [];
 
   var activeScreen = "start-screen";
@@ -25,7 +24,7 @@ class _QuizState extends State<Quiz> {
 
   void chooseAnswer(String answer) {
     selectedAnswers.add(answer);
-    if (selectedAnswers.length == questions.length){
+    if (selectedAnswers.length == questions.length) {
       setState(() {
         activeScreen = "results-screen";
         selectedAnswers.clear(); // Clear answers for the next quiz
@@ -35,15 +34,16 @@ class _QuizState extends State<Quiz> {
 
   @override
   Widget build(BuildContext context) {
-
     Widget screenWidget = StartScreen(switchScreen);
-        
-    if (activeScreen == "questions-screen"){
-      screenWidget = QuestionsScreen(onSelectAnswer: chooseAnswer,);
+
+    if (activeScreen == "questions-screen") {
+      screenWidget = QuestionsScreen(
+        onSelectAnswer: chooseAnswer,
+      );
     } else if (activeScreen == "results-screen") {
-      screenWidget = const ResultsScreen();
+      screenWidget = ResultsScreen(choosenAnswers: selectedAnswers);
     }
-    
+
     return MaterialApp(
       home: Scaffold(
         body: Container(
